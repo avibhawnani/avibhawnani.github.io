@@ -21,8 +21,40 @@ footer {
 
 @media (max-width: 600px) {
   footer {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
+    gap: 6px;
   }
+  .footer-left,
+  .footer-right {
+    font-size: 10px;
+  }
+}
+
+.footer-name {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: inherit;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+.footer-name:hover {
+  color: var(--accent);
+}
+.footer-name--copied {
+  color: #22c55e !important;
+  animation: emailPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes footerPop {
+  0%   { transform: scale(1);    }
+  45%  { transform: scale(1.08); }
+  75%  { transform: scale(0.97); }
+  100% { transform: scale(1);    }
 }
