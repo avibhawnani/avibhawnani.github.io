@@ -32,6 +32,23 @@
       });
     }
 
+    const emailIcon = document.getElementById('nav-email-icon');
+    if (emailIcon) {
+      emailIcon.addEventListener('click', function () {
+        navigator.clipboard.writeText(PROFILE.email).then(function () {
+          var dot = document.querySelector('.nav-dot');
+          emailIcon.innerHTML = '✓ Email Copied!';
+          emailIcon.classList.add('nav-email-icon--copied');
+          if (dot) dot.classList.add('nav-dot--copied');
+          setTimeout(function () {
+            emailIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>';
+            emailIcon.classList.remove('nav-email-icon--copied');
+            if (dot) dot.classList.remove('nav-dot--copied');
+          }, 2000);
+        });
+      });
+    }
+
     const links = {
       'nav-twitter':  PROFILE.twitter,
       'nav-github':   PROFILE.github,
@@ -43,7 +60,24 @@
     });
 
     const footer = document.getElementById('footer-tagline');
-    if (footer) footer.textContent = PROFILE.footerTagline;
+    if (footer) {
+      const namePart = PROFILE.footerTagline.split(' · ')[0];
+      const restPart = PROFILE.footerTagline.split(' · ').slice(1).join(' · ');
+      footer.innerHTML = `<button class="footer-name" id="footer-name-btn">${namePart}</button>${restPart ? ' · ' + restPart : ''}`;
+      const nameBtn = document.getElementById('footer-name-btn');
+      if (nameBtn) {
+        nameBtn.addEventListener('click', function () {
+          navigator.clipboard.writeText(PROFILE.email).then(function () {
+            nameBtn.textContent = '✓ copied';
+            nameBtn.classList.add('footer-name--copied');
+            setTimeout(function () {
+              nameBtn.textContent = namePart;
+              nameBtn.classList.remove('footer-name--copied');
+            }, 2000);
+          });
+        });
+      }
+    }
   }
 
   /* ---- Footer ---- */
