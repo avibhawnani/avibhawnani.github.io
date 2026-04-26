@@ -1,0 +1,38 @@
+/* ============================================
+   theme.css — CSS variables for dark/light mode
+   Edit colors here to retheme the entire site
+   ============================================ */
+
+:root {
+  --bg: #0c0c0c;
+  --bg2: #111111;
+  --text: #e8e8e8;
+  --text-muted: #6b6b6b;
+  --text-dim: #3d3d3d;
+  --border: rgba(255, 255, 255, 0.07);
+  --accent: #f97316;
+  --tab-active: #e8e8e8;
+  --tab-inactive: #4a4a4a;
+  --hover-bg: rgba(255, 255, 255, 0.03);
+  --tag-bg: rgba(255, 255, 255, 0.04);
+  --tag-border: rgba(255, 255, 255, 0.1);
+  --toggle-bg: rgba(255, 255, 255, 0.06);
+  --toggle-border: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] {
+  --bg: #fafaf8;
+  --bg2: #f2f1ef;
+  --text: #1a1a1a;
+  --text-muted: #666;
+  --text-dim: #ccc;
+  --border: rgba(0, 0, 0, 0.07);
+  --accent: #ea580c;
+  --tab-active: #1a1a1a;
+  --tab-inactive: #aaa;
+  --hover-bg: rgba(0, 0, 0, 0.03);
+  --tag-bg: rgba(0, 0, 0, 0.04);
+  --tag-border: rgba(0, 0, 0, 0.1);
+  --toggle-bg: rgba(0, 0, 0, 0.05);
+  --toggle-border: rgba(0, 0, 0, 0.1);
+}

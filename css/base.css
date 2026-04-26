@@ -1,0 +1,97 @@
+/* ============================================
+   base.css — resets, body, fonts, animations
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* --- Scroll progress bar --- */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  z-index: 1000;
+  transition: width 0.05s linear;
+}
+
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  padding: 4px 9px;
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  border-radius: 4px;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.tag:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+[data-theme="light"] .tag {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.18);
+  color: #444;
+}
+[data-theme="light"] .tag:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+/* --- Page load animations --- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.anim-1 { animation: fadeUp 0.6s ease both; animation-delay: 0.05s; }
+.anim-2 { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
+.anim-3 { animation: fadeUp 0.6s ease both; animation-delay: 0.25s; }
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .container { padding: 0 1.25rem; }
+}

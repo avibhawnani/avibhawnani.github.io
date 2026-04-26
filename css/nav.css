@@ -1,0 +1,125 @@
+/* ============================================
+   nav.css — top navigation bar
+   ============================================ */
+
+nav {
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  cursor: pointer;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1);    opacity: 1;    }
+  50%       { transform: scale(1.2); opacity: 0.75; }
+}
+
+.nav-dot:hover {
+  animation: none;
+  transform: scale(1.15);
+}
+
+.nav-dot--copied {
+  background: #22c55e !important;
+  animation: none;
+}
+
+.nav-email {
+  font-size: 13px;
+  color: var(--text);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  padding: 6px 12px;
+  border: 1px solid var(--toggle-border);
+  border-radius: 6px;
+  background: var(--toggle-bg);
+  transition: all 0.2s ease;
+}
+.nav-email:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.nav-email--copied {
+  border-color: #22c55e !important;
+  color: #22c55e !important;
+  pointer-events: none;
+  animation: emailPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes emailPop {
+  0%   { transform: scale(1);    }
+  45%  { transform: scale(1.1);  }
+  75%  { transform: scale(0.96); }
+  100% { transform: scale(1);    }
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+.nav-link:hover {
+  color: var(--accent);
+}
+
+.theme-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid var(--toggle-border);
+  background: var(--toggle-bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.theme-toggle svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 600px) {
+  .nav-right { gap: 12px; }
+  .nav-email { font-size: 12px; padding: 5px 9px; }
+}
+
+@media (max-width: 480px) {
+  .nav-email { display: none; }
+  .nav-right { gap: 10px; }
+}
