@@ -123,3 +123,37 @@ nav {
   .nav-email { display: none; }
   .nav-right { gap: 10px; }
 }
+
+.nav-email-icon {
+  display: none;
+  background: none;
+  border: 1px solid var(--toggle-border);
+  border-radius: 6px;
+  padding: 5px 9px;
+  cursor: pointer;
+  color: var(--text-muted);
+  background: var(--toggle-bg);
+  transition: all 0.2s ease;
+  line-height: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: -0.01em;
+}
+.nav-email-icon svg {
+  width: 14px;
+  height: 14px;
+}
+.nav-email-icon:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.nav-email-icon--copied {
+  border-color: #22c55e !important;
+  color: #22c55e !important;
+  pointer-events: none;
+  animation: emailPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@media (max-width: 480px) {
+  .nav-email-icon { display: flex; align-items: center; }
+}
