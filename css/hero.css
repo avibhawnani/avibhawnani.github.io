@@ -88,12 +88,22 @@
   text-transform: uppercase;
 }
 
+/* Status bar — below nav, mail icon LHS + status RHS */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0 0;
+  border-top: 1px solid var(--border);
+}
+
 /* Status indicator */
 .hero-status {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 1.5rem;
+  margin-top: 0;
+  margin-left: auto;
 }
 
 .status-dot {
