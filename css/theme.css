@@ -1,38 +1,90 @@
 /* ============================================
-   theme.css — CSS variables for dark/light mode
-   Edit colors here to retheme the entire site
+   theme.css — design tokens.
+   Default is LIGHT (white). Dark is a toggle.
+   Swap --accent to re-skin the whole site.
    ============================================ */
 
-:root {
-  --bg: #0c0c0c;
-  --bg2: #111111;
-  --text: #e8e8e8;
-  --text-muted: #6b6b6b;
-  --text-dim: #3d3d3d;
-  --border: rgba(255, 255, 255, 0.07);
-  --accent: #f97316;
-  --tab-active: #e8e8e8;
-  --tab-inactive: #4a4a4a;
-  --hover-bg: rgba(255, 255, 255, 0.03);
-  --tag-bg: rgba(255, 255, 255, 0.04);
-  --tag-border: rgba(255, 255, 255, 0.1);
-  --toggle-bg: rgba(255, 255, 255, 0.06);
-  --toggle-border: rgba(255, 255, 255, 0.1);
+:root,
+:root[data-theme="light"] {
+  /* surfaces */
+  --bg:         #fcfcfb;
+  --bg2:        #f4f4f2;
+  --card:       #ffffff;
+  --card-hover: #ffffff;
+  --nav-bg:     rgba(255, 255, 255, 0.72);
+
+  /* text */
+  --text:       #18181b;
+  --text-muted: #55555d;
+  --text-dim:   #a1a1aa;
+
+  /* lines */
+  --border:  rgba(0, 0, 0, 0.08);
+  --border2: rgba(0, 0, 0, 0.14);
+
+  /* the one accent */
+  --accent:        #4f46e5;
+  --accent-text:   #4338ca;
+  --accent-soft:   rgba(79, 70, 229, 0.08);
+  --accent-border: rgba(79, 70, 229, 0.26);
+  --glow:          rgba(79, 70, 229, 0.08);
+
+  --live: #16a34a;
+
+  --tag-bg:        #f6f6f5;
+  --tag-border:    rgba(0, 0, 0, 0.1);
+  --toggle-bg:     rgba(0, 0, 0, 0.04);
+  --toggle-border: rgba(0, 0, 0, 0.12);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 18px 50px rgba(0, 0, 0, 0.12);
+  --photo-filter: grayscale(100%) contrast(1.02);
+
+  /* LAYN hill map (ported from layn.in — kept fixed in both themes) */
+  --map-forest:     #a9dc92;
+  --map-scrub:      #c4e7ab;
+  --map-open:       #eceadf;
+  --map-bare:       #f7f5ef;
+  --map-roadline:   #b3b7c6;
+  --map-label:      rgba(86, 92, 102, 0.95);
+  --map-city-label: rgba(38, 44, 52, 0.95);
+  --map-peak-label: rgba(104, 134, 176, 0.95);
+
+  --grain-opacity: 0.025;
 }
 
-[data-theme="light"] {
-  --bg: #fafaf8;
-  --bg2: #f2f1ef;
-  --text: #1a1a1a;
-  --text-muted: #666;
-  --text-dim: #ccc;
-  --border: rgba(0, 0, 0, 0.07);
-  --accent: #ea580c;
-  --tab-active: #1a1a1a;
-  --tab-inactive: #aaa;
-  --hover-bg: rgba(0, 0, 0, 0.03);
-  --tag-bg: rgba(0, 0, 0, 0.04);
-  --tag-border: rgba(0, 0, 0, 0.1);
-  --toggle-bg: rgba(0, 0, 0, 0.05);
-  --toggle-border: rgba(0, 0, 0, 0.1);
+:root[data-theme="dark"] {
+  --bg:         #0a0a0b;
+  --bg2:        #0f0f12;
+  --card:       rgba(255, 255, 255, 0.028);
+  --card-hover: rgba(255, 255, 255, 0.055);
+  --nav-bg:     rgba(18, 18, 20, 0.6);
+
+  --text:       #ededed;
+  --text-muted: #8a8a93;
+  --text-dim:   #4a4a52;
+
+  --border:  rgba(255, 255, 255, 0.08);
+  --border2: rgba(255, 255, 255, 0.15);
+
+  --accent:        #6366f1;
+  --accent-text:   #a5a8ff;
+  --accent-soft:   rgba(99, 102, 241, 0.13);
+  --accent-border: rgba(99, 102, 241, 0.35);
+  --glow:          rgba(99, 102, 241, 0.14);
+
+  --live: #22c55e;
+
+  --tag-bg:        rgba(255, 255, 255, 0.04);
+  --tag-border:    rgba(255, 255, 255, 0.1);
+  --toggle-bg:     rgba(255, 255, 255, 0.05);
+  --toggle-border: rgba(255, 255, 255, 0.12);
+
+  --shadow-sm: none;
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
+  --photo-filter: grayscale(100%) contrast(1.05) brightness(0.95);
+
+  --grain-opacity: 0.04;
 }

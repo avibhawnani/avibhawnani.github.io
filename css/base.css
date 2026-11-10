@@ -1,97 +1,93 @@
 /* ============================================
-   base.css — resets, body, fonts, animations
+   base.css — resets, fonts, effects (grain,
+   spotlight, reveal), section heads, tags.
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  font-size: 16px;
-}
+html { font-size: 16px; scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 300;
   line-height: 1.6;
   min-height: 100vh;
-  transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  transition: background 0.35s ease, color 0.35s ease;
   -webkit-font-smoothing: antialiased;
 }
 
-.container {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
+.mono { font-family: 'JetBrains Mono', monospace; }
 
-/* --- Scroll progress bar --- */
+/* --- Scroll progress --- */
 #scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: var(--accent);
-  z-index: 1000;
-  transition: width 0.05s linear;
+  position: fixed; top: 0; left: 0;
+  width: 0%; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-text));
+  z-index: 1000; transition: width 0.08s linear;
 }
 
-
-.mono {
-  font-family: 'JetBrains Mono', monospace;
+/* --- Film grain --- */
+.grain {
+  position: fixed; inset: 0; z-index: 2000; pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* --- Cursor spotlight --- */
+#spotlight {
+  position: fixed; top: 0; left: 0;
+  width: 560px; height: 560px; margin: -280px 0 0 -280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow) 0%, transparent 65%);
+  pointer-events: none; z-index: 0; opacity: 0;
+  transition: opacity 0.4s ease; will-change: transform;
+}
+body.spotlight-on #spotlight { opacity: 1; }
+
+/* --- Scroll reveal --- */
+.reveal {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* --- Section header --- */
+.section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 1.5rem; }
+.section-index { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent-text); letter-spacing: 0.05em; }
+.section-title { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 500; color: var(--text); letter-spacing: 0.05em; text-transform: uppercase; }
+.section-rule { flex: 1; height: 1px; background: var(--border); }
+
+/* --- Tags --- */
 .tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11.5px;
-  padding: 4px 9px;
-  background: var(--tag-bg);
-  border: 1px solid var(--tag-border);
-  border-radius: 4px;
-  color: var(--text-muted);
-  letter-spacing: 0.01em;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
+  padding: 4px 9px; background: var(--tag-bg); border: 1px solid var(--tag-border);
+  border-radius: 6px; color: var(--text-muted); letter-spacing: 0.01em;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
-.tag:hover {
-  color: var(--accent);
-  border-color: var(--accent);
+.tag:hover { color: var(--accent-text); border-color: var(--accent-border); background: var(--accent-soft); }
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+
+.inline-code {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.88em;
+  background: var(--tag-bg); padding: 1px 5px; border-radius: 3px;
+  border: 1px solid var(--tag-border); color: var(--text);
+}
+.metric {
+  display: inline-block; font-family: 'JetBrains Mono', monospace;
+  font-size: 0.86em; font-weight: 500; color: var(--accent-text);
+  background: var(--accent-soft); border: 1px solid var(--accent-border);
+  border-radius: 5px; padding: 1px 7px;
 }
 
-[data-theme="light"] .tag {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.18);
-  color: #444;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  #spotlight { display: none; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; }
 }
-[data-theme="light"] .tag:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-.tag-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 10px;
-}
-
-/* --- Page load animations --- */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.anim-1 { animation: fadeUp 0.6s ease both; animation-delay: 0.05s; }
-.anim-2 { animation: fadeUp 0.6s ease both; animation-delay: 0.15s; }
-.anim-3 { animation: fadeUp 0.6s ease both; animation-delay: 0.25s; }
-
-/* --- Responsive --- */
-@media (max-width: 600px) {
-  .container { padding: 0 1.25rem; }
-}
+@media (max-width: 900px) { #spotlight { display: none; } }
