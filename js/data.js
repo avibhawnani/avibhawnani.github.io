@@ -133,8 +133,8 @@ const PROJECTS = [
     kind: "Founding engineer · building",
     url: "http://layn.in/",
     live: true,
-    blurb: "A live map of small, local plans happening near you tonight — ask a host to join, and the address appears once they say yes. Building it end to end.",
-    tags: ["Mobile", "Maps", "Realtime", "Trust & safety"],
+    blurb: "A cross-platform React Native app for iOS and Android. Supabase (Postgres + Realtime) powers the backend, with row-level security gating each plan's address until a host approves; Firebase handles auth, and Mapbox renders the live map. Built end to end.",
+    tags: ["React Native", "iOS", "Android", "Supabase", "PostgreSQL", "Firebase Auth", "Mapbox"],
   },
   {
     name: "Async Job Processing Engine",
